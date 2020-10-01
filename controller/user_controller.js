@@ -75,8 +75,14 @@ module.exports = {
     async get_booking_history(req, res){
       try {
         userData = req.user
-        let booking_history = await booking_model.findAll({where:{user_id:userData.dataValues.id}})
-        res.status(200).json({'status':'success','message':booking_history,})        
+        let temp=userData.dataValues.id
+        if(typeof(userData.dataValues.id)=='number'){
+          console.log('inside')
+          temp = temp.toString()  
+        }
+        let booking_history = await booking_model.findAll({where:{user_id:temp}})
+        console.log(booking_history)
+        res.status(200).json({'status':'success','message':booking_history})        
       } catch (err) {
           console.log(err.name);
           console.log(err.message);
@@ -118,7 +124,7 @@ module.exports = {
             )
             .catch((err) => {
               res.status(400).json({
-                value: "fail",
+                status: "fail",
                 error_name: err.name,
                 message: err.message,
               });
@@ -138,7 +144,7 @@ module.exports = {
           if (data === null) {
             res
               .status(400)
-              .json({ value: "fail", message: "user does not exist" });
+              .json({ status: "fail", message: "user does not exist" });
           } else {
             // console.log(data.dataValues)
             bcrypt
@@ -147,7 +153,7 @@ module.exports = {
                 if (result === false) {
                   res
                     .status(400)
-                    .json({ value: "fail", message: "incorrect password" });
+                    .json({ status: "fail", message: "incorrect password" });
                 } else {
                   let token1 = jwt.sign(
                     {
@@ -162,7 +168,7 @@ module.exports = {
                       { where: { id: data.dataValues.id } }
                     )
                     .then((data) => {
-                      res.status(200).json({ value: "success", token: token1 });
+                      res.status(200).json({ status: "success", token: token1 });
                     });
                 }
               })
