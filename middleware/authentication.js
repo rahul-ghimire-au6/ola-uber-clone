@@ -1,4 +1,4 @@
-var user_model = require("../model/user_model");
+var user_model = require("../models/user_model");
 module.exports = async (req, res, next) => {
     try {
         if (req.header("Authorization")) {

@@ -1,14 +1,19 @@
 const Sequelize = require('sequelize');
-const dotenv=require("dotenv")
+const fs=require('fs');
+const dotenv=require("dotenv");
+const path=require('path')
+var pathToJson = path.resolve(__dirname, './config.json');
 dotenv.config()
 
-const {POSTGRES_USERNAME,POSTGRES_PASS}=process.env
+let db=undefined;
+
+db = fs.readFileSync(pathToJson,{'encoding':'utf-8'})
+db_data = JSON.parse(db)
 
 if(process.env.NODE_ENV === 'test'){
-  console.log('inside')
-  var sequelize = new Sequelize('uber_clone_test_db', 'postgres', 'light159', {
-    host: 'localhost',
-    dialect:'postgres',
+  var sequelize = new Sequelize(db_data.test.database, db_data.test.username, db_data.test.password, {
+    host: db_data.test.host,
+    dialect:db_data.test.dialect,
     define: {
       timestamps: false
   }
@@ -23,9 +28,9 @@ if(process.env.NODE_ENV === 'test'){
     });
 }
 else{
-  var sequelize = new Sequelize(POSTGRES_USERNAME, POSTGRES_USERNAME, POSTGRES_PASS, {
-    host: 'arjuna.db.elephantsql.com',
-    dialect:'postgres',
+  var sequelize = new Sequelize(db_data.development.database, db_data.development.username,db_data.development.password, {
+    host: db_data.development.host,
+    dialect:db_data.development.dialect,
     define: {
       timestamps: false
   }

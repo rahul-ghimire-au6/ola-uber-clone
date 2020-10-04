@@ -1,6 +1,6 @@
-const user_model = require("../model/user_model");
-const driver_model = require("../model/driver_model");
-const booking_model = require("../model/booking_model");
+const user_model = require("../models/user_model");
+const driver_model = require("../models/driver_model");
+const booking_model = require("../models/booking_model");
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 

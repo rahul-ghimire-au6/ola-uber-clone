@@ -1,4 +1,4 @@
-const driver_model=require('../model/driver_model')
+const driver_model=require('../models/driver_model')
 const bcrypt=require('bcryptjs')
 var jwt = require('jsonwebtoken');
 
