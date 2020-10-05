@@ -75,12 +75,15 @@ module.exports = {
     async get_booking_history(req, res){
       try {
         userData = req.user
+        const { pageNo } = req.query
+        offset = pageNo * 2
+        limit = 2
         let temp=userData.dataValues.id
         if(typeof(userData.dataValues.id)=='number'){
           console.log('inside')
           temp = temp.toString()  
         }
-        let booking_history = await booking_model.findAll({where:{user_id:temp}})
+        let booking_history = await booking_model.findAll({limit,offset,where:{user_id:temp}})
         console.log(booking_history)
         res.status(200).json({'status':'success','message':booking_history})        
       } catch (err) {
