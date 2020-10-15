@@ -1,5 +1,4 @@
 # ola-uber-clone
-click on **documentation.pdf** for the documentation.  
 If you want to use **migrations and seeders** please check the **dev branch**.  
 Click on **documentation.pdf** for Swagger documentation or else you can also read the following.
 
