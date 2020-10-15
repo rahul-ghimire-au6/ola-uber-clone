@@ -3,81 +3,71 @@ click on **documentation.pdf** for the documentation
 If you want to use **migrations and seeders** please check the **dev branch**.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Ola-Uber-Clone**
+# Ola-Uber-Clone
 
-Technologies used for this Project
+## Technologies used for this Project
 
-**Backend: -** Node.js
+## Backend: - Node.js
 
-**Database: -** PostgreSQL
+## Database: - PostgreSQL
 
-**Npm modules: -** axios, bcryptjs, dotenv, express, express-rate-limit, jsonwebtoken, sequelize, pg, pg-store, jest, supertest, morgan, nodemon
+## Npm modules: - axios, bcryptjs, dotenv, express, express-rate-limit, jsonwebtoken,
 
-**Environmental variables: -**
+## sequelize, pg, pg-store, jest, supertest, morgan, nodemon
 
-POSTGRES\_PASS=UJW4edE469xih4-h5UqIJY94DNl8a00T
+## Environmental variables: -
 
-POSTGRES\_USERNAME=hillkslt
+POSTGRES_PASS=UJW4edE469xih4-h5UqIJY94DNl8a00T
 
-NODE\_ENV=test // this is required only while testing
+POSTGRES_USERNAME=hillkslt
+
+NODE_ENV=test // this is required only while testing
 
 Note: - if using seeder and migration please ignore environmental variables
 
-**Migration &amp; Seeder: -**
+## Migration & Seeder: -
 
-Please add your postgres detail (username, password, database name,) in the **config.json** file for example: -
+Please add your postgres detail (username, password, database name,) in the **config.json**
+
+file for example: -
 
 {
 
-&quot;development&quot;: {
-
-&quot;username&quot;: &quot;postgres&quot;,
-
-&quot;password&quot;: &quot;light159&quot;,
-
-&quot;database&quot;: &quot;database\_development&quot;,
-
-&quot;host&quot;: &quot;127.0.0.1&quot;,
-
-&quot;dialect&quot;: &quot;postgres&quot;
-
+"development": {
+"username": "postgres",
+"password": "light159",
+"database": "database_development",
+"host": "127.0.0.1",
+"dialect": "postgres"
 },
-
-&quot;test&quot;: {
-
-&quot;username&quot;: &quot;postgres&quot;,
-
-&quot;password&quot;: &quot;light159&quot;,
-
-&quot;database&quot;: &quot;database\_test&quot;,
-
-&quot;host&quot;: &quot;127.0.0.1&quot;,
-
-&quot;dialect&quot;: &quot;postgres&quot;
-
+"test": {
+"username": "postgres",
+"password": "light159",
+"database": "database_test",
+"host": "127.0.0.1",
+"dialect": "postgres"
 },
-
 }
-
-If you are using different port apart from default postgres port: - 5432, add &quot;port&quot;: &quot;your port number goes here&quot;, add this inside the json
+If you are using different port apart from default postgres port: - 5432, add
+“port”: ”your port number goes here”, add this inside the json
 
 Please run following commands to successfully run the program: -
+1) npm i
+2) npx sequelize-cli db:create
+3) npx sequelize-cli db:migrate:all
+4) npx sequelize-cli db:seed:all
+5) npm start or npm run dev
 
-1. npm i
-2. npx sequelize-cli db:create
-3. npx sequelize-cli db:migrate:all
-4. npx sequelize-cli db:seed:all
-5. npm start or npm run dev
 
-User Endpoints
+# User Endpoints
 
 ID and Emails are unique.
 
-Note: - if using running locally the endpoint starts with **localhost:8080**
+Note: - if using running locally the endpoint starts with **localhost:**
 
-**Register / Signup User: -**
+## Register / Signup User: -
 
-POST – (&quot;users/signup&quot;)
+POST – (“users/signup”)
 
 Body: name, email, password
 
@@ -87,17 +77,17 @@ For example: -
 
 {
 
-    &quot;name&quot;:&quot;Rahul R Ghimire&quot;,
+"name":"Rahul R Ghimire",
 
-    &quot;email&quot;:&quot;ghimirerahul@gmail.com&quot;,
+"email":"ghimirerahul@gmail.com",
 
-    &quot;password&quot;:&quot;Badlapur@123&quot;
+"password":"Badlapur@123"
 
 }
 
-**Login User: -**
+## Login User: -
 
-POST – (&quot;users/login&quot;)
+POST – (“users/login”)
 
 Body: email, password
 
@@ -107,121 +97,132 @@ For example: -
 
 {
 
-    &quot;email&quot;:&quot;ghimirerahul@gmail.com&quot;,
+"email":"ghimirerahul@gmail.com",
 
-    &quot;password&quot;:&quot;Badlapur@123&quot;
+"password":"Badlapur@123"
 
 }
 
-**Logout User: -**
+## Logout User: -
 
-POST – (&quot;users/logout/:token&quot;)
+POST – (“users/logout/:token”)
 
 Here provide JWT token as a params to get logged out
 
 For example: -
 
-localhost:8080/users/logout/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZ2hpbWlyZXJhaHVsQGdtYWlsLmNvbSIsImlhdCI6MTYwMDc5MzE0NywiZXhwIjoxNjAwNzk2NzQ3fQ.1RCPs\_fJge-8brHVbSEBsPZM1SY1OrJAfX1HkIm9eYU
+localhost:8080/users/logout/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZ2hpbWlyZXJhaH
+VsQGdtYWlsLmNvbSIsImlhdCI6MTYwMDc5MzE0NywiZXhwIjoxNjAwNzk2NzQ3fQ.1RCPs_fJge-
+8brHVbSEBsPZM1SY1OrJAfX1HkIm9eYU
 
-**User Cab Booking: -**
 
-POST – (&quot;users/booking&quot;)
+### User Cab Booking: -
 
-Header: - Authorization: user&#39;s JWT Token
+POST – (“users/booking”)
 
-Body: pickup\_address (street, city, state, postalcode), destination\_address (street, city, state, postalcode)
+Header: - Authorization: user’s JWT Token
 
-Here provide JWT token as an authorization in the header, and provide pickup and destination address breaking the address into street, city, state, postal code
+Body: pickup_address (street, city, state, postalcode), destination_address (street, city,
+state, postalcode)
+
+Here provide JWT token as an authorization in the header, and provide pickup and
+destination address breaking the address into street, city, state, postal code
 
 For example: -
 
 {
 
-    &quot;pickup\_address&quot;:{
+"pickup_address":{
 
-        &quot;street&quot;:&quot;dp road&quot;,
+"street":"dp road",
 
-        &quot;city&quot;:&quot;Badlapur&quot;,
+"city":"Badlapur",
 
-        &quot;state&quot;:&quot;Maharashtra&quot;,
+"state":"Maharashtra",
 
-        &quot;postalcode&quot;:&quot;421503&quot;
+"postalcode":"421503"
 
-    },
+},
 
-    &quot;destination\_address&quot;:{
+"destination_address":{
 
-        &quot;street&quot;:&quot;manjarli&quot;,
+"street":"manjarli",
 
-        &quot;city&quot;:&quot;Badlapur&quot;,
+"city":"Badlapur",
 
-        &quot;state&quot;:&quot;Maharashtra&quot;,
+"state":"Maharashtra",
 
-        &quot;postalcode&quot;:&quot;421503&quot;
-
-    }
+"postalcode":"421503"
 
 }
 
-**User Select Driver: -**
+#### }
 
-GET – (&quot;users/cab\_list/:booking id&quot;)
 
-Header: - Authorization: user&#39;s JWT Token
+### User Select Driver: -
+
+GET – (“users/cab_list/:booking id”)
+
+Header: - Authorization: user’s JWT Token
 
 Body: - proximity (in kilometers)
 
-Here provide JWT token as an authorization in the header and booking id generated by the server from previous / above request as a params and proximity as a body, proximity is optional default proximity range is 2 kms hence if you want to set the range lower or higher you can do it so that server will provide you cabs within this proximity range
+Here provide JWT token as an authorization in the header and booking id generated by the
+server from previous / above request as a params and proximity as a body, proximity is
+optional default proximity range is 2 kms hence if you want to set the range lower or higher
+you can do it so that server will provide you cabs within this proximity range
 
 For example: -
 
-Request: - GET localhost:8080/users/cab\_list/5
+Request: - GET localhost:8080/users/cab_list/
 
 Body: -
 
 {
 
-    &quot;proximity&quot;:1
+"proximity": 1
 
 }
 
-**User Checking Out: -**
+### User Checking Out: -
 
-POST – (&quot;users/checkout/:booking id&quot;)
+POST – (“users/checkout/:booking id”)
 
-Header: - Authorization: user&#39;s JWT Token
+Header: - Authorization: user’s JWT Token
 
-Body: - driver&#39;s id
+Body: - driver’s id
 
-Here again provide JWT token as an authorization in the header, and the booking id and your preferred driver&#39;s id from the list of drivers provided by the server
+Here again provide JWT token as an authorization in the header, and the booking id and
+your preferred driver’s id from the list of drivers provided by the server
 
 For example: -
 
 {
 
-    &quot;driver\_id&quot;:4
+"driver_id": 4
 
 }
 
-**User&#39;s Booking History: -**
 
-GET – (&quot;users/get\_booking\_history&quot;)
+## User’s Booking History: -
 
-Header: - Authorization: user&#39;s JWT Token
+GET – (“users/get_booking_history”)
 
-Query: - pageNo = &#39;enter page no.&#39; for example: - 0,1,2,3
+Header: - Authorization: user’s JWT Token
 
-Here provide JWT token as an authorization in the header and pageNo as a query to get paginated booking history
+Query: - pageNo = ‘enter page no.’ for example: - 0,1,2,
+
+Here provide JWT token as an authorization in the header and pageNo as a query to get
+paginated booking history
 
 For example: -
+localhost:8080/users/get_booking_history?pageNo=
 
-localhost:8080/users/get\_booking\_history?pageNo=1
+# Drivers Endpoints
 
-Drivers Endpoints
+## Register / Signup Driver: -
 
-**Register / Signup Driver: -**
-
-POST – (&quot;drivers/signup&quot;)
+POST – (“drivers/signup”)
 
 Body: name, email, password, address (street, city, state, postal code)
 
@@ -231,29 +232,30 @@ For example: -
 
 {
 
-    &quot;name&quot;:&quot;rahul ghimire&quot;,
+"name":"rahul ghimire",
 
-    &quot;email&quot;:&quot;rahulghimire@gmail.com&quot;,
+"email":"rahulghimire@gmail.com",
 
-    &quot;password&quot;:&quot;qwerty&quot;,
+"password":"qwerty",
 
-    &quot;address&quot;:{
+"address":{
 
-        &quot;street&quot;:&quot;rameshwadi&quot;,
+"street":"rameshwadi",
 
-        &quot;city&quot;:&quot;badlapur&quot;,
+"city":"badlapur",
 
-        &quot;state&quot;:&quot;Maharashtra&quot;,
+"state":"Maharashtra",
 
-        &quot;postalcode&quot;:421503
-
-    }
+"postalcode": 421503
 
 }
 
-**Login Driver: -**
+}
 
-POST – (&quot;drivers/login&quot;)
+
+### Login Driver: -
+
+POST – (“drivers/login”)
 
 Body: email, password, address (street, city, state, postal code)
 
@@ -263,30 +265,35 @@ For example: -
 
 {
 
-    &quot;email&quot;:&quot;rahulghimire@gmail.com&quot;,
+"email":"rahulghimire@gmail.com",
 
-    &quot;password&quot;:&quot;qwerty&quot;,
+"password":"qwerty",
 
-    &quot;address&quot;:{
+"address":{
 
-        &quot;street&quot;:&quot;dp road&quot;,
+"street":"dp road",
 
-        &quot;city&quot;:&quot;Badlapur&quot;,
+"city":"Badlapur",
 
-        &quot;state&quot;:&quot;Maharashtra&quot;,
+"state":"Maharashtra",
 
-        &quot;postalcode&quot;:421503
-
-    }
+"postalcode": 421503
 
 }
 
-**Logout Driver: -**
+}
 
-POST – (&quot;drivers/logout/:token&quot;)
+## Logout Driver: -
+
+POST – (“drivers/logout/:token”)
 
 Here provide JWT token as a params to get logged out
 
 For example: -
 
-localhost:8080/drivers/logout/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZ2hpbWlyZXJhaHVsQGdtYWlsLmNvbSIsImlhdCI6MTYwMDg4MzU0MCwiZXhwIjoxNjAwODg3MTQwfQ.Bed9j\_\_ZlPdHOzFr-ZafiMUXVHvA2T4CJFwyZb31LMs
+localhost:8080/drivers/logout/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZ2hpb
+WlyZXJhaHVsQGdtYWlsLmNvbSIsImlhdCI6MTYwMDg4MzU0MCwiZXhwIjoxNjAwODg3MT
+
+### QwfQ.Bed9j__ZlPdHOzFr-ZafiMUXVHvA2T4CJFwyZb31LMs
+
+
